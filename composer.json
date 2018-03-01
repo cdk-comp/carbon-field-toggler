@@ -1,0 +1,19 @@
+{
+    "name": "cdk-comp/carbon-field-toggler",
+    "description": "Carbon Fields extension, that adds a Toggler field type.",
+    "keywords": ["rd", "carbon-fields"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [],
+    "require": {
+        "htmlburger/carbon-fields": "^2.0"
+    },
+    "autoload": {
+        "files": [
+            "field.php"
+        ],
+        "psr-4": {
+            "Carbon_Field_Toggler\\": "core/"
+        }
+    }
+}
