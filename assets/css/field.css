@@ -1,5 +1,51 @@
-.cf-toggler {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+.carbon-toggler {
+  background: #fafafa;
+  border-color: #e5e5e5;
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+  cursor: pointer;
+  flex: 1 1 100%;
+  padding: 11px 12px 12px;
+  position: relative;
+}
+
+.carbon-toggler h3 {
+  font-size: 28px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.carbon-toggler.collapsed-enabled.collapsed:before {
+  top: calc(50% - 15px);
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.carbon-toggler.collapsed-enabled:before {
+  content: '';
+  display: block;
+  height: 20px;
+  border-right: 2px solid #24282d;
+  border-top: 2px solid #24282d;
+  position: absolute;
+  right: 17px;
+  top: calc(50% - 5px);
+  transform: rotate(-45deg);
+  width: 20px;
+  -webkit-transform: rotate(-45deg);
+}
+
+.carbon-container > .carbon-toggler ~ :not(.carbon-toggler),
+.carbon-toggler ~ .toggled-field {
+  display: none;
+}
+
+.carbon-toggler ~ .toggled-field.uncollapsed {
+  display: block;
 }
