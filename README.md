@@ -2,11 +2,11 @@
 > Custom extension for [Carbon Fields](https://github.com/htmlburger/carbon-fields).
 
 ### Creates visual toggle between adjacent fields in carbon fields.
-Has aesthetic function only, no data is saved. (supported version ^2.0)
+Has aesthetic function only, no data is saved. (supported version ^2.2.0)
 
 Adds a toggle tab field type to Carbon Fields. Install using composer:
 
-`composer require cdk-comp/carbon-field-toggler:v1.0.0`
+`composer require cdk-comp/carbon-field-toggler:v1.0.1`
 
 ## Usage
 `Field::make( 'toggler', 'crb_style_options', 'Settings' )`
