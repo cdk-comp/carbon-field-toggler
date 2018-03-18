@@ -6,7 +6,7 @@
     "license": "MIT",
     "authors": [],
     "require": {
-        "htmlburger/carbon-fields": "^2.0"
+        "htmlburger/carbon-fields": "^2.2.0"
     },
     "autoload": {
         "files": [
