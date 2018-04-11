@@ -21,7 +21,7 @@
   user-select: none;
 }
 
-.carbon-toggler.collapsed-enabled.collapsed:before {
+.carbon-toggler.collapsed-enabled[data-collapsed=close]:before {
   top: calc(50% - 15px);
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
@@ -42,10 +42,11 @@
 }
 
 .carbon-container > .carbon-toggler ~ :not(.carbon-toggler),
-.carbon-toggler ~ .toggled-field {
+.carbon-toggler ~ [data-toggled] {
   display: none;
 }
 
-.carbon-toggler ~ .toggled-field.uncollapsed {
+.carbon-toggler ~ [data-toggled][data-collapsed=open]:not([hidden]),
+.carbon-toggler ~ .carbon-field.carbon-highlight:not([hidden]) {
   display: block;
 }

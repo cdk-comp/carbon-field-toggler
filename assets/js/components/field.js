@@ -21,14 +21,14 @@ import withSetup from 'fields/decorators/with-setup';
  * @return {React.Element}
  */
 export const TogglerField = ({
-	field,
-  togglerHelper,
-  addCollapsed
-}) => {
-  window.addEventListener('load', addCollapsed);
-  return <div onClick={togglerHelper} className={'collapsed carbon-toggler ' + field.id}>
-    <h3>{field.label}</h3>
-  </div>;
+                                 field,
+                                 togglerHelper,
+                                 addCollapsed
+                             }) => {
+    window.addEventListener('load', addCollapsed);
+    return <div onClick={togglerHelper} className={'collapsed carbon-toggler ' + field.id}>
+        <h3>{field.label}</h3>
+    </div>;
 };
 
 /**
@@ -37,11 +37,11 @@ export const TogglerField = ({
  * @type {Object}
  */
 TogglerField.propTypes = {
-  field: PropTypes.shape({
-    label: PropTypes.string,
-  }),
-  togglerHelper: PropTypes.func,
-  addCollapsed: PropTypes.func,
+    field: PropTypes.shape({
+        label: PropTypes.string,
+    }),
+    togglerHelper: PropTypes.func,
+    addCollapsed: PropTypes.func,
 };
 
 /**
@@ -50,56 +50,67 @@ TogglerField.propTypes = {
  * @type {Function}
  */
 export const enhance = compose(
-	/**
-	 * Connect to the Redux store.
-	 */
-	withStore(),
+    /**
+     * Connect to the Redux store.
+     */
+    withStore(),
 
-	/**
-	 * Attach the setup hooks.
-	 */
-	withSetup(),
+    /**
+     * Attach the setup hooks.
+     */
+    withSetup(),
 
-  /**
-   * The handlers passed to the component.
-   */
-  withHandlers({
+    /**
+     * The handlers passed to the component.
+     */
+    withHandlers({
 
-    togglerHelper: ({ field }) => () => {
-      const target = document.getElementsByClassName(field.id);
-      const targetFields = document.getElementsByClassName('toggled-' + field.id);
+        togglerHelper: ({ field }) => () => {
+            const target = document.getElementsByClassName(field.id);
+            const targetFields = document.querySelectorAll('[data-toggled="' + field.id +'"]');
 
-      target[0].classList.toggle('collapsed');
+            if(target[0].dataset.collapsed === 'close') {
+                target[0].dataset.collapsed = 'open';
+            } else {
+                target[0].dataset.collapsed = 'close';
+            }
 
-      for (let i=0; i<targetFields.length; i++) {
-        targetFields[i].classList.toggle('uncollapsed');
-      }
-    },
+            for (let i=0; i<targetFields.length; i++) {
 
-    addCollapsed: ({ field }) => () => {
-      const toggle = document.getElementsByClassName(field.id)[0];
+                if(targetFields[i].dataset.collapsed === 'open') {
+                    targetFields[i].dataset.collapsed = 'close';
+                } else {
+                    targetFields[i].dataset.collapsed = 'open';
+                }
 
-      toggle.classList.toggle('collapsed-enabled');
+            }
+        },
 
-      function nextElementSibling(element) {
-        if(element.nextSibling && !element.nextSibling.classList.contains('carbon-toggler')) {
-          element.nextSibling.classList.add('toggled-field');
-          element.nextSibling.classList.add('toggled-' + field.id);
-          nextElementSibling(element.nextSibling);
-        } else {
-          return false;
+        addCollapsed: ({ field }) => () => {
+            const toggle = document.getElementsByClassName(field.id)[0];
+
+            toggle.classList.toggle('collapsed-enabled');
+
+            function nextElementSibling(element) {
+                if(element.nextSibling && !element.nextSibling.classList.contains('carbon-toggler')) {
+
+                    element.nextSibling.dataset.toggled = field.id;
+
+                    nextElementSibling(element.nextSibling);
+                } else {
+                    return false;
+                }
+
+            }
+
+            nextElementSibling(toggle);
+
+            return false;
+
         }
-
-      }
-
-      nextElementSibling(toggle);
-
-      return false;
-
-    }
-  })
+    })
 );
 
 export default setStatic('type', [
-	'toggler',
+    'toggler',
 ])(enhance(TogglerField));
