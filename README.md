@@ -6,7 +6,7 @@ Has aesthetic function only, no data is saved. (supported version ^2.2.0)
 
 Adds a toggle tab field type to Carbon Fields. Install using composer:
 
-`composer require cdk-comp/carbon-field-toggler:v1.0.4`
+`composer require cdk-comp/carbon-field-toggler:v1.0.5`
 
 ## Usage
 `Field::make( 'toggler', 'crb_style_options', 'Settings' )`
