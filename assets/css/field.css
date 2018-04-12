@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.carbon-toggler[disabled] {
+  display: none;
+}
+
 .carbon-toggler h3 {
   font-size: 28px;
   line-height: 1;

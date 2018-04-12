@@ -21,13 +21,13 @@ import withSetup from 'fields/decorators/with-setup';
  * @return {React.Element}
  */
 export const TogglerField = ({
-                                 field,
-                                 togglerHelper,
-                                 addCollapsed
-                             }) => {
+    field,
+    togglerHelper,
+    addCollapsed
+}) => {
     window.addEventListener('load', addCollapsed);
-    return <div onClick={togglerHelper} className={'collapsed carbon-toggler ' + field.id}>
-        <h3>{field.label}</h3>
+    return <div onClick={togglerHelper} className={'collapsed carbon-toggler ' + field.id} disabled={!field.ui.is_visible}>
+    <h3>{field.label}</h3>
     </div>;
 };
 
