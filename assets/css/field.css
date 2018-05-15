@@ -54,3 +54,7 @@
 .carbon-toggler ~ .carbon-field.carbon-highlight:not([hidden]) {
   display: block;
 }
+
+.carbon-toggler ~ [data-toggled][data-collapsed=open].carbon-hidden {
+  display: none;
+}
