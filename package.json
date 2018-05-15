@@ -1,6 +1,6 @@
 {
   "name": "carbon-field-Toggler",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "dev": "webpack -w",
     "build": "webpack"
